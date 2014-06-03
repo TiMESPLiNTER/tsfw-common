@@ -1,0 +1,7 @@
+<phpunit bootstrap="bootstrap.php" colors="true">
+    <testsuits>
+        <testsuite name="tsfw common">
+            <file>StringUtilsTest.php</file>
+        </testsuite>
+    </testsuits>
+</phpunit>
