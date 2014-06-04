@@ -6,7 +6,7 @@
  * @version 1.0.0
  */
 
-namespace timesplinter\common\test;
+namespace test\StringUtils;
 
 use timesplinter\tsfw\common\StringUtils;
 
@@ -30,6 +30,20 @@ class StringUtilsTest extends \PHPUnit_Framework_TestCase {
 	public function testInsertBeforeLast() {
 		$this->assertSame(StringUtils::insertBeforeLast('foo bar', 'bar', 'test '), 'foo test bar', 'Test 1');
 	}
+
+    public function testStartsWith() {
+        $this->assertEquals(StringUtils::startsWith('foobar', 'f'), true, 'Test 1');
+        $this->assertEquals(StringUtils::startsWith('foobar', 'o'), false, 'Test 2');
+        $this->assertEquals(StringUtils::startsWith('foobar', 'fo'), true, 'Test 3');
+        $this->assertEquals(StringUtils::startsWith('foobar', 'foobar'), true, 'Test 4');
+    }
+
+    public function testEndsWith() {
+        $this->assertEquals(StringUtils::endsWith('foobar', 'f'), false, 'Test 1');
+        $this->assertEquals(StringUtils::endsWith('foobar', 'a'), false, 'Test 2');
+        $this->assertEquals(StringUtils::endsWith('foobar', 'ar'), true, 'Test 3');
+        $this->assertEquals(StringUtils::endsWith('foobar', 'foobar'), true, 'Test 4');
+    }
 }
 
 /* EOF */
