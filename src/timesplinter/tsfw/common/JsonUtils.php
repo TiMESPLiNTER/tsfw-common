@@ -17,7 +17,7 @@ class JsonUtils {
 	 * @param bool $toAssoc
 	 * @param bool $minified
 	 * @return mixed
-	 * @throws JSONException
+	 * @throws JsonException
 	 */
 	public static function decode($json, $toAssoc = false, $minified = true)  {
 		if($minified === false) {
@@ -46,7 +46,7 @@ class JsonUtils {
         }
 
         if($error !== null)
-            throw new JSONException('Invalid JSON code: ' . $error);
+            throw new JsonException('Invalid JSON code: ' . $error);
        
         return $result;
     }
@@ -56,17 +56,17 @@ class JsonUtils {
 	 * @param bool $toAssoc
 	 * @param bool $minified
 	 * @return mixed
-	 * @throws JSONException
+	 * @throws JsonException
 	 */
 	public static function decodeFile($filePath, $toAssoc = false, $minified = true) {
 		if(file_exists($filePath) === false)
-			throw new JSONException('JSON-File does not exist: ' . $filePath);
+			throw new JsonException('JSON-File does not exist: ' . $filePath);
 
 		try {
 			return self::decode(file_get_contents($filePath), $toAssoc, $minified);
 		} catch(\Exception $e) {
 
-			throw new JSONException($e->getMessage() . ', File: ' . $filePath);
+			throw new JsonException($e->getMessage() . ', File: ' . $filePath);
 		}
 	}
 
