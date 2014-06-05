@@ -1,8 +1,8 @@
-[![Build Status](https://travis-ci.org/TiMESPLiNTER/tsfw-common.svg)](https://travis-ci.org/TiMESPLiNTER/tsfw-common)
-
 tsfw-common
 ===========
 This framework component deals with everyday operations for strings, arrays, other scalar data types and even some classes.
+
+[![Build Status](https://travis-ci.org/TiMESPLiNTER/tsfw-common.svg)](https://travis-ci.org/TiMESPLiNTER/tsfw-common)
 
 StringUtils
 -----------
