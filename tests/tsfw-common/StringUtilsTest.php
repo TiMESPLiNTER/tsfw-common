@@ -1,15 +1,13 @@
 <?php
 
-/**
- * @author Pascal Muenst <dev@timesplinter.ch>
- * @copyright Copyright (c) 2013, TiMESPLiNTER Webdevelopment
- * @version 1.0.0
- */
-
 namespace test\StringUtils;
 
 use timesplinter\tsfw\common\StringUtils;
 
+/**
+ * @author Pascal Muenst <dev@timesplinter.ch>
+ * @copyright Copyright (c) 2013, TiMESPLiNTER Webdevelopment
+ */
 class StringUtilsTest extends \PHPUnit_Framework_TestCase {
 
 	public function testAfterFirst() {
@@ -45,6 +43,21 @@ class StringUtilsTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals(StringUtils::endsWith('foobar', 'ar'), true, 'Test 3');
         $this->assertEquals(StringUtils::endsWith('foobar', 'foobar'), true, 'Test 4');
     }
+
+	public function testTokenize() {
+		$this->assertEquals(StringUtils::tokenize('foobarbaz', 'a'), array(
+			'foob', 'rb', 'z'
+		), 'Test 1');
+
+		$this->assertEquals(StringUtils::tokenize('foobarbaz', 'baz'), array(
+			'foo', 'r'
+		), 'Test 2');
+	}
+
+	public function testUrlify() {
+		$this->assertEquals(StringUtils::urlify('!"#$%&\'()*+,/:'), '-no-dollar-percentage-and-plus-', 'Test #');
+		$this->assertEquals(StringUtils::urlify('this is a string! a very long string', 16), 'this-is-a-string', 'Test maxLength');
+	}
 }
 
 /* EOF */

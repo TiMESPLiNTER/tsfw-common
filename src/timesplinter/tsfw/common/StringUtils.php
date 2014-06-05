@@ -114,16 +114,16 @@ class StringUtils {
 	 * @return array The splitted parts
 	 */
 	public static function tokenize($str, $token) {
-		$tokenArr = array();
+		$tokenizedStrArr = array();
 		$tokStr = strtok($str, $token);
 
 		while($tokStr !== false) {
-			$tokenArr[] = $tokStr;
+			$tokenizedStrArr[] = $tokStr;
 
 			$tokStr = strtok($token);
 		}
 
-		return $tokenArr;
+		return $tokenizedStrArr;
 	}
 
 	/**
@@ -151,7 +151,7 @@ class StringUtils {
 	 */
 	public static function urlify($str, $maxLength = 0, $printableCharReplacement = '-') {
 		$charMap = array(
-			'!' => null, '"' => null,
+			' ' => $printableCharReplacement, '!' => null, '"' => null,
 			'#' => $printableCharReplacement . 'no' . $printableCharReplacement,
 			'$' => $printableCharReplacement . 'dollar' . $printableCharReplacement,
 			'%' => $printableCharReplacement . 'percentage' . $printableCharReplacement,
