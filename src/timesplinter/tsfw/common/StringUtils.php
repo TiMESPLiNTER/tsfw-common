@@ -4,26 +4,26 @@ namespace timesplinter\tsfw\common;
 
 /**
  * Some useful functions for string operations
- * @package ch\timesplinter\common
  *
  * @author Pascal Muenst <dev@timesplinter.ch>
  * @copyright Copyright (c) 2013 by TiMESPLiNTER Webdevelopment
  */
 class StringUtils {
 	/**
-	 * @param string $str
-	 * @param string $start
-	 * @param string $end
-	 * @return null|string
+     * Returns a substring between two given strings
+	 * @param string $haystack The string to search in
+	 * @param string $leftStr Left string limiter
+	 * @param string $rightStr Right string limiter
+	 * @return string The string between start and end string
 	 */
-	public static function between($str, $start, $end) {
-        $posStart = strpos($str, $start) + strlen($start);
-        $posEnd = strrpos($str, $end, $posStart);
+	public static function between($haystack, $leftStr, $rightStr) {
+        $posStart = strpos($haystack, $leftStr) + strlen($leftStr);
+        $posEnd = strrpos($haystack, $rightStr, $posStart);
         
 		if($posEnd === false)
-			return null;
+			return '';
 		
-        return substr($str, $posStart, $posEnd-$posStart);   
+        return substr($haystack, $posStart, $posEnd-$posStart);
     }
 
 	/**
