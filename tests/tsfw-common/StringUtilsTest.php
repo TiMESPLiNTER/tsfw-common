@@ -45,6 +45,11 @@ class StringUtilsTest extends \PHPUnit_Framework_TestCase {
     }
 
 	public function testTokenize() {
+		if (defined('HHVM_VERSION')) {
+			echo 'Ignore those tests because of this issue in HHVM: https://github.com/facebook/hhvm/issues/2860';
+			return;
+		}
+
 		$this->assertEquals(StringUtils::tokenize('foobarbaz', 'a'), array(
 			'foob', 'rb', 'z'
 		), 'Test 1');
