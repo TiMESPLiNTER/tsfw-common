@@ -7,25 +7,25 @@ This framework component deals with everyday operations for strings, arrays, oth
 
 StringUtils
 -----------
-* afterFirst
-* afterLast
-* between
-* beforeFirst
-* beforeLast
-* endsWith
-* insertBefore
-* insertAfter
-* startsWith
-* tokenize
-* urlify
+* **afterFirst** - Returns a substring after first occurrence of a string
+* **afterLast** - Returns a substring after last occurrence of a string
+* **between** - Returns a substring between two strings 
+* **beforeFirst** - Returns a substring before first occurrence of a string
+* **beforeLast** - Returns a substring before last occurrence of a string
+* **endsWith** - Checks if a string ends with a specific substring
+* **insertBefore** - Inserts a string before a specific substring
+* **insertAfter** - Inserts a string after a specific substring
+* **startsWith** - Checks if a string starts with a specific substring
+* **tokenize** - Returns an array of tokens from a string
+* **urlify** - Converts a string to a URL friendly representation
 
 ArrayUtils
 ----------
-* arrayColumn
-* implode
+* **arrayColumn** - User-land implementation of PHP 5.5s `array_column()` function
+* **implode** - Improvement of the PHP built-in `implode()` function
 
 JsonUtils
 ---------
-* decode
-* decodeFile
-* minify
+* **decode**
+* **decodeFile**
+* **minify**
