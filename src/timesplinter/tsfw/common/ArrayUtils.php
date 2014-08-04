@@ -110,6 +110,28 @@ class ArrayUtils {
 
 		return $resultArray;
 	}
+
+	/**
+	 * @param array $pieces The array of strings to implode.
+	 * @param string|null $glue Glue string to glue the array elements
+	 * @param string|null $glueLast Special glue string between second last and last piece
+	 * @param string|null $glueFirst Special glue string between first and second piece
+	 * @return string A string containing a string representation of all the array
+	 * elements in the same order, with the specific glue strings between each element.
+	 */
+	public static function implode(array $pieces, $glue = null, $glueLast = null, $glueFirst = null)
+	{
+		$firstPiece = null;
+		$lastPiece = null;
+		
+		if($glueLast !== null)
+			$lastPiece = $glueLast . array_pop($pieces);
+		
+		if($glueFirst !== null)
+			$firstPiece = array_shift($pieces) . $glueFirst;
+		
+		return $firstPiece . implode($glue, $pieces) . $lastPiece;
+	}
 }
 
 /* EOF */
