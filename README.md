@@ -22,6 +22,7 @@ StringUtils
 ArrayUtils
 ----------
 * arrayColumn
+* implode
 
 JsonUtils
 ---------
