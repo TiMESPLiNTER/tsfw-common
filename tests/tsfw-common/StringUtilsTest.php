@@ -22,7 +22,7 @@ class StringUtilsTest extends \PHPUnit_Framework_TestCase {
 
 	public function testBetween() {
 		$this->assertSame(StringUtils::between('foobarbaz', 'foo', 'baz'), 'bar', 'Test 1');
-		$this->assertSame(StringUtils::between('foobarbaz', 'fooba', ''), '', 'Test 2');
+		$this->assertSame(StringUtils::between('foobarbaz', 'fooba', ''), 'rbaz', 'Test 2');
 		$this->assertSame(StringUtils::between('foobarbaz', 'foobar', 'baz'), '', 'Test 3');
 	}
 

@@ -8,7 +8,8 @@ namespace timesplinter\tsfw\common;
  * @author Pascal Muenst <dev@timesplinter.ch>
  * @copyright Copyright (c) 2013 by TiMESPLiNTER Webdevelopment
  */
-class StringUtils {
+class StringUtils
+{
 	/**
      * Returns a substring between two given strings
 	 * @param string $haystack The string to search in
@@ -16,12 +17,13 @@ class StringUtils {
 	 * @param string $rightStr Right string limiter
 	 * @return string The string between start and end string
 	 */
-	public static function between($haystack, $leftStr, $rightStr) {
+	public static function between($haystack, $leftStr, $rightStr)
+	{
         $posStart = strpos($haystack, $leftStr) + strlen($leftStr);
         $posEnd = strrpos($haystack, $rightStr, $posStart);
         
 		if($posEnd === false)
-			return '';
+			return substr($haystack, $posStart);
 		
         return substr($haystack, $posStart, $posEnd-$posStart);
     }
@@ -31,7 +33,8 @@ class StringUtils {
 	 * @param string $before
 	 * @return string
 	 */
-	public static function beforeFirst($str, $before) {
+	public static function beforeFirst($str, $before)
+	{
         $posUntil = strpos($str, $before);
         
         if($posUntil === false)
@@ -45,7 +48,8 @@ class StringUtils {
 	 * @param string $before
 	 * @return string
 	 */
-	public static function beforeLast($str, $before) {
+	public static function beforeLast($str, $before)
+	{
         $posUntil = strrpos($str, $before);
         
         if($posUntil === false)
@@ -59,7 +63,8 @@ class StringUtils {
 	 * @param string $after
 	 * @return null|string
 	 */
-	public static function afterLast($str, $after) {
+	public static function afterLast($str, $after)
+	{
         $posFrom = strrpos($str, $after);
         
         if($posFrom === false)
@@ -73,7 +78,8 @@ class StringUtils {
 	 * @param string $after
 	 * @return null|string
 	 */
-	public static function afterFirst($str, $after) {
+	public static function afterFirst($str, $after)
+	{
         $posFrom = strpos($str, $after);
         
         if($posFrom === false)
@@ -84,7 +90,8 @@ class StringUtils {
         return ($afterStr !== false)?$afterStr:'';
     }
 
-	public static function insertBeforeLast($str, $beforeLast, $newStr) {
+	public static function insertBeforeLast($str, $beforeLast, $newStr)
+	{
 		return self::beforeLast($str, $beforeLast) . $newStr . $beforeLast . self::afterLast($str, $beforeLast);
 	}
 
@@ -93,7 +100,8 @@ class StringUtils {
 	 * @param string $startStr
 	 * @return bool
 	 */
-	public static function startsWith($str, $startStr) {
+	public static function startsWith($str, $startStr)
+	{
 		return (strpos($str, $startStr) === 0);
 	}
 
@@ -102,10 +110,11 @@ class StringUtils {
 	 * @param string $endStr
 	 * @return bool
 	 */
-	public static function endsWith($str, $endStr) {
-		$endStrlen = strlen($endStr);
+	public static function endsWith($str, $endStr)
+	{
+		$endStrLen = strlen($endStr);
 		
-		return (strrpos($str, $endStr)+$endStrlen === strlen($str));
+		return (strrpos($str, $endStr)+$endStrLen === strlen($str));
 	}
 
 	/**
@@ -113,7 +122,8 @@ class StringUtils {
 	 * @param string $token The tokens to split the string
 	 * @return array The splitted parts
 	 */
-	public static function tokenize($str, $token) {
+	public static function tokenize($str, $token)
+	{
 		$tokenizedStrArr = array();
 		$tokStr = strtok($str, $token);
 
@@ -131,7 +141,8 @@ class StringUtils {
 	 * @param string $str
 	 * @return array
 	 */
-	public static function explode($tokens, $str) {
+	public static function explode($tokens, $str)
+	{
 		$strToExplode = $str;
 		$explodeStr = $tokens;
 
@@ -149,7 +160,8 @@ class StringUtils {
 	 * @param string $printableCharReplacement Replacement char for incompatible printable chars
 	 * @return string The urlified string
 	 */
-	public static function urlify($str, $maxLength = 0, $printableCharReplacement = '-') {
+	public static function urlify($str, $maxLength = 0, $printableCharReplacement = '-')
+	{
 		$charMap = array(
 			' ' => $printableCharReplacement, '!' => null, '"' => null,
 			'#' => $printableCharReplacement . 'no' . $printableCharReplacement,
