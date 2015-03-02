@@ -9,22 +9,26 @@ namespace timesplinter\tsfw\common;
  * @author Pascal Muenst <dev@timesplinter.ch>
  * @copyright Copyright (c) 2013, TiMESPLiNTER Webdevelopment
  */
-class ArrayUtils {
+class ArrayUtils
+{
 	/**
 	 * Returns the values from a single column of the input array, identified by the column_key. Optionally, you may
 	 * provide an index_key to index the values in the returned array by the values from the index_key column in the
 	 * input array. This method uses the native array_column function of PHP if it exists and else it implements an
 	 * own way to achieve the same result (before PHP 5.5.0)
 	 * (Based on: https://github.com/ramsey/array_column/blob/master/src/array_column.php)
+	 * 
 	 * @param array $input A multi-dimensional array (record set) from which to pull a column of values.
 	 * @param mixed $column_key The column of values to return. This value may be the integer key of the column you
 	 * wish to retrieve, or it may be the string key name for an associative array. It may also be NULL to return
 	 * complete arrays (useful together with index_key to reindex the array).
 	 * @param mixed $index_key The column to use as the index/keys for the returned array. This value may be the integer
 	 * key of the column, or it may be the string key name.
+	 * 
 	 * @return array Returns an array of values representing a single column from the input array.
 	 */
-	public static function arrayColumn($input = null, $column_key = null, $index_key = null) {
+	public static function arrayColumn($input = null, $column_key = null, $index_key = null)
+	{
 		if(function_exists('array_column') === true)
 			return array_column($input, $column_key, $index_key);
 
@@ -116,6 +120,7 @@ class ArrayUtils {
 	 * @param string|null $glue Glue string to glue the array elements
 	 * @param string|null $glueLast Special glue string between second last and last piece
 	 * @param string|null $glueFirst Special glue string between first and second piece
+	 * 
 	 * @return string A string containing a string representation of all the array
 	 * elements in the same order, with the specific glue strings between each element.
 	 */
@@ -131,6 +136,96 @@ class ArrayUtils {
 			$firstPiece = array_shift($pieces) . $glueFirst;
 		
 		return $firstPiece . implode($glue, $pieces) . $lastPiece;
+	}
+
+	/**
+	 * @param array ... arrays to sum
+	 * 
+	 * @return array
+	 * 
+	 * @throws \InvalidArgumentException
+	 */
+	public static function arraySum()
+	{
+		$args = func_get_args();
+		$basicArray = array_pop($args);
+
+		foreach($args as $array) {
+			if(is_array($array) === false)
+				throw new \InvalidArgumentException('Expected array for parameter');
+
+			foreach($array as $k => $v) {
+				if(array_key_exists($k, $basicArray) === true)
+					$basicArray[$k] += $v;
+				else
+					$basicArray[$k] = $v;
+			}
+		}
+
+		return $basicArray;
+	}
+
+	public static function getLevelFromArray($array, $levelFrom, $levelCount = 1)
+	{
+		$newArray = array();
+
+		foreach($array as $k => $v) {
+
+			if(!is_array($v)) {
+				var_dump($v);
+				continue;
+			} else {
+				var_dump($levelCount, $levelFrom);
+				if($levelCount >= $levelFrom) {
+					$newArray[$k] = $v;
+				} else {
+					echo 'called!';
+					$newArray += self::getLevelFromArray($v, $levelFrom, ($levelCount + 1));
+				}
+			}
+		}
+
+		var_dump($newArray); echo '<hr>';
+
+		return $newArray;
+	}
+
+	/**
+	 * Checks if every entry is empty in the array
+	 * 
+	 * @param array $array The array to check
+	 * @param mixed $emptyValue Specify which value should be treated as empty. Null for a check against the empty()
+	 * builtin function
+	 * 
+	 * @return bool True if every entry in the array is empty else false
+	 */
+	public static function isEveryEntryEmpty(array $array, $emptyValue = null)
+	{
+		foreach($array as $element) {
+			if(($emptyValue === null && !empty($element) === true) || $emptyValue != $element)
+				return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * Checks if no entry is empty in the array
+	 * 
+	 * @param array $array The array to check
+	 * @param mixed $emptyValue Specify which value should be treated as empty. Null for a check against the empty()
+	 * builtin function
+	 * 
+	 * @return bool True if no entry in the array is empty else false
+	 */
+	public static function isNoEntryEmpty(array $array, $emptyValue = null)
+	{
+		foreach($array as $element) {
+			if(($emptyValue === null && empty($element) === true) || $emptyValue === $element)
+				return false;
+		}
+
+		return true;
 	}
 }
 
