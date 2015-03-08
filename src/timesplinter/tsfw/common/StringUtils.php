@@ -19,7 +19,9 @@ class StringUtils
 	 */
 	public static function between($haystack, $leftStr, $rightStr)
 	{
-        $posStart = strpos($haystack, $leftStr) + strlen($leftStr);
+		$leftStrLen = strlen($leftStr);
+
+		$posStart = ($leftStrLen > 0 ? strpos($haystack, $leftStr) : 0) + $leftStrLen;
         $posEnd = strrpos($haystack, $rightStr, $posStart);
         
 		if($posEnd === false)
