@@ -202,6 +202,28 @@ class StringUtils
 
 		return substr($urlifiedStr, 0, $maxLength);
 	}
+
+	/**
+	 * Checks if the given string is a float
+	 *
+	 * @param string $str
+	 * @return bool
+	 */
+	public static function isFloat($str)
+	{
+		return ($str === (string)(float)$str);
+	}
+
+	/**
+	 * Checks if the given string is an int
+	 *
+	 * @param string $str
+	 * @return bool
+	 */
+	public static function isInt($str)
+	{
+		return ($str === (string)(int)$str);
+	}
 }
 
 /* EOF */
