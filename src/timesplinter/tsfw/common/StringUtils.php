@@ -213,7 +213,7 @@ class StringUtils
 	 */
 	public static function isFloat($str)
 	{
-		return ($str === (string)(float)$str);
+		return ($str === (string)(float)$str && self::isInt($str) === false);
 	}
 
 	/**

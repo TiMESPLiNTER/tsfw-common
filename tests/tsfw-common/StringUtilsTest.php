@@ -62,9 +62,24 @@ class StringUtilsTest extends \PHPUnit_Framework_TestCase
 		), 'Test 2');
 	}
 
-	public function testUrlify() {
+	public function testUrlify()
+	{
 		$this->assertEquals(StringUtils::urlify('!"#$%&\'()*+,/:'), '-no-dollar-percentage-and-plus-', 'Test #');
 		$this->assertEquals(StringUtils::urlify('this is a string! a very long string', 16), 'this-is-a-string', 'Test maxLength');
+	}
+
+	public function testIsInt()
+	{
+		$this->assertEquals(false, StringUtils::isInt('foo'), 'Not an int but a string');
+		$this->assertEquals(false, StringUtils::isInt('42.3'), 'Not an int but a float');
+		$this->assertEquals(true, StringUtils::isInt('42'), 'An int');
+	}
+
+	public function testIsFloat()
+	{
+		$this->assertEquals(false, StringUtils::isFloat('foo'), 'Not a float but a string');
+		$this->assertEquals(false, StringUtils::isFloat('42'), 'Not a float but an int');
+		$this->assertEquals(true, StringUtils::isFloat('42.3'), 'A float');
 	}
 }
 
