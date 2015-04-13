@@ -227,6 +227,30 @@ class ArrayUtils
 
 		return true;
 	}
+
+	/**
+	 * Checks if the array is associative (some keys type is string)
+	 * 
+	 * @param array $array The array to check
+	 *
+	 * @return bool
+	 */
+	public static function isAssociative(array $array)
+	{
+		return (bool)count(array_filter(array_keys($array), 'is_string'));
+	}
+
+	/**
+	 * Checks if an array is sequential (numeric keys only)
+	 * 
+	 * @param array $array The array to check
+	 *
+	 * @return bool
+	 */
+	public static function isSequential(array $array)
+	{
+		return !self::isAssociative($array);
+	}
 }
 
 /* EOF */
