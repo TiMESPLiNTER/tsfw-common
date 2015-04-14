@@ -23,6 +23,8 @@ ArrayUtils
 ----------
 * **arrayColumn** - User-land implementation of PHP 5.5s `array_column()` function
 * **implode** - Improvement of the PHP built-in `implode()` function
+* **isAssociative** - Checks if the array is associative (some keys type is string)
+* **isSequential** - Checks if an array is sequential (numeric keys only)
 
 JsonUtils
 ---------

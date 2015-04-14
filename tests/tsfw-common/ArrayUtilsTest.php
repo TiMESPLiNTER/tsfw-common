@@ -1,6 +1,7 @@
 <?php
 
 namespace test\StringUtils;
+
 use timesplinter\tsfw\common\ArrayUtils;
 
 /**
