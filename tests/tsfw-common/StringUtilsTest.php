@@ -1,6 +1,6 @@
 <?php
 
-namespace test\StringUtils;
+namespace test\common;
 
 use timesplinter\tsfw\common\StringUtils;
 

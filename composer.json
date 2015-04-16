@@ -13,6 +13,9 @@
             "timesplinter\\": "src/timesplinter/"
         }
     },
+	"autoload-dev": {
+		"psr-4": { "timesplinter\\tests\\": "tests/src/" }
+	},
     "authors": [
         {
             "name": "Pascal Muenst",
