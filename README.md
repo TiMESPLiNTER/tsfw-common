@@ -31,3 +31,8 @@ JsonUtils
 * **decode**
 * **decodeFile**
 * **minify**
+
+ReflectionUtils
+---------------
+* **getLockedProperty** - Gets a value of a locked property from a specific class instance
+* **setLockedProperty** - Sets a value of a locked property from a specific class instance
